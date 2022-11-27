@@ -27,7 +27,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::group(
     [
-        'middleware' => 'auth',
+        'middleware' => ['auth', 'is_admin'],
         'prefix' => 'admin',
         'as' => 'admin.',
     ],
@@ -57,4 +57,4 @@ Route::group(
 );
 
 
-Route::get('/products/list', [ProductController::class, 'list'])->name('products.list')->middleware('auth');
+Route::get('/products/list', [ProductController::class, 'list'])->name('products.list')->middleware(['auth', 'is_client']);

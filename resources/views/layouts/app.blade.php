@@ -56,12 +56,15 @@
                                 </li>
                             @endif
                         @else
+                            @if(auth()->user()->is_admin)
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('admin.clients.index') }}">{{ __('Clients') }}</a>
                             </li>
+                            @else
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('products.list') }}">{{ __('Products') }}</a>
                             </li>
+                            @endif
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
